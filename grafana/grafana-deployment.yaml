@@ -16,15 +16,20 @@ spec:
         name: grafana
     spec:
       containers:
-        - image: grafana/grafana:4.6.3
+        - image: grafana/grafana:7.0.4
           imagePullPolicy: Always
           name: grafana
           ports:
             - containerPort: 3000
               protocol: TCP
           volumeMounts:
-            - mountPath: /var/lib/grafana
-              name: data
+            - name: datasource-config
+              mountPath: /etc/grafana/provisioning/datasources
+            - name: data
+              mountPath: /var/lib/grafana
       volumes:
         - emptyDir: {}
           name: data
+        - configMap:
+            name: grafana-datasource-config
+          name: datasource-config
