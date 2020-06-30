@@ -1,1 +1,1 @@
-Monitoring Kubenetes Using Prometheus and Grafana
+Monitoring Kubernetes Cluster Using Prometheus and Grafana
